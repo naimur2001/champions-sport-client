@@ -52,7 +52,7 @@ const Navbar = () => {
   <div className="navbar-end">
     {user ? <li className="w-10 rounded-full">
           <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </li> : <button className='btn btn-ghost'>Login </button>}
+        </li> : <Link to={'/login'}><button className='btn btn-ghost'>Login</button></Link>}
    
   </div>
 </div>
