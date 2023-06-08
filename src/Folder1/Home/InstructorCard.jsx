@@ -11,7 +11,7 @@ const InstructorCard = ({instructor}) => {
     <h2 className="card-title font-mono">{instructor.name}</h2>
     <p className='text-lg'>{instructor.sport} Trainer</p>
     <div className="card-actions">
-      <button className="btn btn-success">See Classes</button>
+      <button className="btn bg-blue-200 hover:bg-blue-300">See Classes</button>
     </div>
   </div>
 </div>

@@ -16,7 +16,7 @@ const PopolarSection = () => {
 <h2 className="card-title font-mono">{cl.name}</h2>
 <p className='text-sm'>{cl.description}</p>
 <div className="card-actions justify-end">
-<button className="btn btn-error">More</button>
+<button className="btn btn-neutral">More</button>
 </div>
 </div>
 </div>
