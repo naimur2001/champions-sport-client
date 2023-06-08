@@ -3,8 +3,10 @@ import SectionTitle from '../Shared/SectionTitle';
 import useInstructors from '../../Folder1/Hooks/useInstructors';
 import InstructorCard from '../../Folder1/Home/InstructorCard';
 
+
 const Instructor = () => {
-const [instructors]=useInstructors()
+const [instructors]=useInstructors();
+
   return (
     <div>
       <SectionTitle title={'Our Talented Instructors - '}></SectionTitle>

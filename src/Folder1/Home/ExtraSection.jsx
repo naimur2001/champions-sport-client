@@ -4,6 +4,7 @@ import useClasses from '../Hooks/useClasses';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+
 const ExtraSection = () => {
   const [classes]=useClasses();
   useEffect(() => {
@@ -13,6 +14,7 @@ const ExtraSection = () => {
       delay: 200, 
     });
   }, []);
+ 
   return (
     <div>
       <SectionTitle title={"Academy's Captivating Gallery"}></SectionTitle>

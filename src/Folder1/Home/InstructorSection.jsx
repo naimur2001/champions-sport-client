@@ -22,15 +22,26 @@ const InstructorSection = () => {
       <SectionTitle  title={'Popular Instructors'}  ></SectionTitle>
       <div className="my-4">
       <Swiper
-        slidesPerView={4}
         
-        spaceBetween={40}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          620: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        }}
         freeMode={true}
         pagination={{
           clickable: true,
           
         }}
-      
         modules={[FreeMode,Pagination]}
         className="mySwiper "
       >
