@@ -11,7 +11,7 @@ const InstructorCard = ({instructor}) => {
     <h2 className="card-title">{instructor.name}</h2>
     <p>{instructor.sport} Trainer</p>
     <div className="card-actions">
-      <button className="btn btn-primary">More</button>
+      <button className="btn btn-success">See Classes</button>
     </div>
   </div>
 </div>
