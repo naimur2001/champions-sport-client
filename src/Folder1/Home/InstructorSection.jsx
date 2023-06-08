@@ -8,15 +8,28 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-import "./styles.css";
+import "/public/random.css";
 
-// import required modules
 import { FreeMode, Pagination } from "swiper";
 
 const InstructorSection = () => {
   return (
     <div>
-      
+            <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>Slide 1</SwiperSlide>
+        {
+          
+        }
+      </Swiper>
     </div>
   );
 };
