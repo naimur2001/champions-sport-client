@@ -1,5 +1,5 @@
-import React from 'react';
-import React, { useRef, useState } from "react";
+
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,25 +11,36 @@ import "swiper/css/pagination";
 import "/public/random.css";
 
 import { FreeMode, Pagination } from "swiper";
+import useInstructors from '../Hooks/useInstructors';
+import InstructorCard from './InstructorCard';
+import SectionTitle from "../../Folder2/Shared/SectionTitle";
 
 const InstructorSection = () => {
+  const [instructors]=useInstructors()
   return (
-    <div>
-            <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+    <div className="mt-8  ">
+      <SectionTitle  title={'Popular Instructors'}  ></SectionTitle>
+      <div className="my-4">
+      <Swiper
+        slidesPerView={4}
+        
+        spaceBetween={40}
         freeMode={true}
         pagination={{
           clickable: true,
-        }}
-        modules={[FreeMode, Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        {
           
+        }}
+      
+        modules={[FreeMode,Pagination]}
+        className="mySwiper "
+      >
+     
+      
+        {
+instructors?.map(instructor=>   <SwiperSlide>    <InstructorCard key={instructor._id} instructor={instructor} ></InstructorCard>  </SwiperSlide>  )
         }
       </Swiper>
+      </div>
     </div>
   );
 };

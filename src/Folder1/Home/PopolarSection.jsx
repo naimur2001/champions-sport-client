@@ -6,7 +6,7 @@ import PopularSectionCard from './PopularSectionCard';
 const PopolarSection = () => {
   const [classes]=useClasses();
   return (
-<div className='my-4'>
+<div className='mt-8 mb-6 '>
   <SectionTitle title={'Popular Classes'} > </SectionTitle>
 <div className='grid lg:grid-cols-2 gap-3 my-3 '>
 {
