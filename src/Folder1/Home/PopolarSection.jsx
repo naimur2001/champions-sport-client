@@ -2,8 +2,6 @@ import React from 'react';
 import useClasses from '../Hooks/useClasses';
 import SectionTitle from '../../Folder2/Shared/SectionTitle';
 
-import ClassCard from './ClassCard';
-
 const PopolarSection = () => {
   const [classes]=useClasses();
   return (
@@ -11,7 +9,18 @@ const PopolarSection = () => {
   <SectionTitle title={'Popular Classes'} > </SectionTitle>
 <div className='grid lg:grid-cols-2 gap-3 my-3 '>
 {
-  classes?.map((cl)=>  <ClassCard key={cl._id} cl={cl} ></ClassCard> )
+  classes?.map((cl)=>  <div>
+  <div  className="card lg:card-side w-90 h-[220px] bg-base-200 shadow-xl">
+<figure><img src={cl.image} className='w-[250px] h-[220px] rounded-xl' alt="Album"/></figure>
+<div className="card-body">
+<h2 className="card-title font-mono">{cl.name}</h2>
+<p className='text-sm'>{cl.description}</p>
+<div className="card-actions justify-end">
+<button className="btn btn-error">More</button>
+</div>
+</div>
+</div>
+</div> )
 }
     </div>
 </div>

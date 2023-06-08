@@ -6,6 +6,7 @@ import Login from "../../Folder2/Authentication/Login";
 import Signup from "../../Folder2/Authentication/Signup";
 import Dashboard from "../../Folder2/Dashboard/Dashboard";
 import Instructor from "../../Folder2/NavsItem/Instructor";
+import Class from "../../Folder2/NavsItem/Class";
 
 
 
@@ -33,6 +34,10 @@ const router=createBrowserRouter([
       {
        path: 'instructors',
        element: <Instructor></Instructor>
+      },
+      {
+        path: 'classes',
+        element: <Class></Class>
       }
       
     ],
