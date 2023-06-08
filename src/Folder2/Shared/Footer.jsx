@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-gradient-to-r from-red-300 to-yellow-300 text-base-content">
+      <footer className="footer p-10 bg-gradient-to-r from-red-300 to-yellow-300 rounded-lg text-base-content">
   <div>
   <img src="/src/assets/cs-logo.png"  className="w-[80px] h-[80px]" alt="" />
     <p>Champions Sport<br/>Providing Best Instruction  since 2012</p>

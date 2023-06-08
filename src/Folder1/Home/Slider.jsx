@@ -24,11 +24,11 @@ const Slider = () => {
     },
   };
   return (
-    <div className="my-4">
+    <div className="my-4 ">
           <Swiper
         pagination={pagination}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper rounded-lg"
       >
         <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
         <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
