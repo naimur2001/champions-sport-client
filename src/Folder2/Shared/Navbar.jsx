@@ -3,7 +3,16 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const Navbar = () => {
-  const {user}=useContext(AuthContext);
+  const {user,logOut}=useContext(AuthContext);
+  const handleSignOut=()=>{
+    logOut()
+  .then(result=>{
+// console.log('');
+  })
+  .catch(error=>{
+    console.log(error);
+  })
+  }
   const navElement = 
     <>
       <li className=' font-medium'>
@@ -50,9 +59,12 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    {user ? <li className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </li> : <Link to={'/login'}><button className='btn btn-ghost'>Login</button></Link>}
+    {user ? <span className='flex justify-between gap-1'>
+      <span className=" flex">
+          <img className='w-10 h-10 rounded-full' src={user.photoURL} />
+    
+        </span>  <span onClick={handleSignOut} className='  py-1 px-2 rounded-lg btn-ghost'>Logout</span>
+    </span> : <Link to={'/login'}><button className='btn btn-ghost'>Login</button></Link>}
    
   </div>
 </div>

@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="footer p-10 bg-gradient-to-r from-red-300 to-yellow-300 text-base-content">
   <div>
   <img src="/src/assets/cs-logo.png"  className="w-[80px] h-[80px]" alt="" />
-    <p>Champions Academy.<br/>Providing Best Instruction  since 2012</p>
+    <p>Champions Sport<br/>Providing Best Instruction  since 2012</p>
   </div> 
   <div>
     <span className="footer-title ">Services</span> 
