@@ -23,13 +23,13 @@ const ExtraSection = () => {
           {classes?.map((cl, index) => (
             <div key={index} className="relative">
               <img
-                src={cl.image}
+                src={cl.url}
                 alt=""
                 className={index % 2 === 0 ? 'aos-animate p-2' : 'aos-animate p-2'}
                 data-aos={index % 2 === 0 ? 'flip-left' : 'flip-down'}
               />
               <div className="absolute inset-0 flex items-center justify-center ">
-                <p  className="text-gray-700 lg:ml-14 opacity-70   text-3xl font-bold">{cl.name.split(' ')[0]}</p>
+                <p  className="text-gray-700 lg:ml-14 opacity-70   text-3xl font-bold">{(cl.name.split(' ')[1])||(cl.name) }</p>
               </div>
             </div>
           ))}

@@ -56,7 +56,7 @@ const ManageUser = () => {
                     <button
                       onClick={() => handleMakeAdmin_Instructor(user)}
                       className={`badge font-medium text-white badge-lg  badge-secondary
-                      ${user?.role === 'instructor' ? 'disabled opacity-20' : '' }   `}
+                      ${user?.role === 'instructor' ? 'disabled opacity-10' : '' }   `}
                   
                     >
                       Instructor
@@ -64,7 +64,7 @@ const ManageUser = () => {
                     <button
                       onClick={() => handleMakeAdmin_Instructor(user)}
                       className={`badge font-medium text-black badge-lg mx-2 badge-warning 
-                      ${user?.role === 'admin' ? 'disabled opacity-20' : '' }  `}
+                      ${user?.role === 'admin' ? 'disabled opacity-10' : '' }  `}
                   
                     >
                       Admin

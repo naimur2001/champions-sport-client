@@ -4,7 +4,9 @@ import SectionTitle from '../../Folder2/Shared/SectionTitle';
 
 const PopolarSection = () => {
   const [classes]=useClasses();
-  
+  // const {
+  //   name,url,seat,price,status,instructor_name,instructor_email,
+  // }=classes
   return (
 <div className='mt-8 mb-6 '>
   <SectionTitle title={'Popular Classes'} > </SectionTitle>
@@ -12,10 +14,10 @@ const PopolarSection = () => {
 {
   classes?.map((cl)=>  <div key={cl._id}>
   <div  className="card lg:card-side w-90 lg:h-[220px] bg-base-200 shadow-xl">
-<figure><img src={cl.image} className='w-[250px] h-[220px] rounded-xl' alt="Album"/></figure>
+<figure><img src={cl.url} className='w-[250px] h-[220px] rounded-xl' alt="Album"/></figure>
 <div className="card-body">
 <h2 className="card-title font-mono">{cl.name}</h2>
-<p className='text-sm'>{cl.description}</p>
+<p className='text-sm'>Available Seats '{cl.seat}'</p>
 <div className="card-actions justify-end">
 <button className="btn btn-neutral">More</button>
 </div>
