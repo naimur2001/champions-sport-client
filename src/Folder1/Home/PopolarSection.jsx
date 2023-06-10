@@ -11,7 +11,7 @@ const PopolarSection = () => {
 <div className='grid lg:grid-cols-2 gap-3 my-3 '>
 {
   classes?.map((cl)=>  <div key={cl._id}>
-  <div  className="card lg:card-side w-90 h-[220px] bg-base-200 shadow-xl">
+  <div  className="card lg:card-side w-90 lg:h-[220px] bg-base-200 shadow-xl">
 <figure><img src={cl.image} className='w-[250px] h-[220px] rounded-xl' alt="Album"/></figure>
 <div className="card-body">
 <h2 className="card-title font-mono">{cl.name}</h2>

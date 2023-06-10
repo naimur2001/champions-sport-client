@@ -1,72 +1,81 @@
-import React from 'react';
-import useUser from '../../Folder1/Hooks/useUser';
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
 
 const ManageUser = () => {
-  const [users]=useUser();
-    // update
-    const handleMakeAdmin=(user)=>{
-      console.log(user);
-             fetch(`http://localhost:5000/users/admin/${user._id}`,{
-              method: "PATCH"
-             })
-             .then(res=>res.json())
-             .then(data=>{
-              console.log(data)
-              if (data.modifiedCount) {
-                refetch()
-                Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: `${user.name} is now Admin`,
-                  showConfirmButton:false,
-                  timer: 1500
-                })
-              }
-             })
-    }
+  const { data: users = [], refetch } = useQuery(['users'], async () => {
+    const res = await fetch('http://localhost:5000/users');
+    return res.json();
+  });
+
+  
+
+  const handleMakeAdmin_Instructor = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user?._id}`, {
+      method: 'PATCH',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `Position Updated`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        
+        }
+      });
+  };
+
+
+
   return (
     <div>
       <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-       
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Actions</th>
-        <th></th>
-      </tr>
-    </thead>
- {
-  users?.map((user,i)=>
-    <tbody className='font-semibold'>
-    {/* row 1 */}
-    <tr>
-    <td >
-      {i+1}
-    </td>
-      
-      <td>
-        {user.name}
-        
-      </td>
-      <td>{user.email}</td>
-      <td className=''>
-<div className=''>
-<button className="badge font-medium text-black badge-lg mx-1 badge-secondary">Instructor</button>
-<button onClick={()=>handleMakeAdmin(user)} className="badge font-medium text-black badge-lg mx-1 badge-warning">Admin</button>
-</div>          
-       
-      </td>
-    </tr>
-  
-  </tbody>
-    )
- }  
-  </table>
-</div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Actions</th>
+              <th></th>
+            </tr>
+          </thead>
+          {users?.map((user, i) => (
+            <tbody className="font-semibold" key={user._id}>
+              <tr>
+                <td>{i + 1}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td className="">
+                  <div className="mx-2">
+                    <button
+                      onClick={() => handleMakeAdmin_Instructor(user)}
+                      className={`badge font-medium text-white badge-lg  badge-secondary
+                      ${user?.role === 'instructor' ? 'disabled opacity-20' : '' }   `}
+                  
+                    >
+                      Instructor
+                    </button>
+                    <button
+                      onClick={() => handleMakeAdmin_Instructor(user)}
+                      className={`badge font-medium text-black badge-lg mx-2 badge-warning 
+                      ${user?.role === 'admin' ? 'disabled opacity-20' : '' }  `}
+                  
+                    >
+                      Admin
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </table>
+      </div>
     </div>
   );
 };
