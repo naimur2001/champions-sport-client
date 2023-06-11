@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 const AddClass = () => {
   const {user}=useContext(AuthContext)
-  const sts='Pending';
+  const sts='pending';
 
   const handleAddData=(event)=>{
     event.preventDefault();

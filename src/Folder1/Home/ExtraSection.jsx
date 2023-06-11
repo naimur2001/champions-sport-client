@@ -14,14 +14,14 @@ const ExtraSection = () => {
       delay: 200, 
     });
   }, []);
- 
+  const localTheme=localStorage.getItem('theme');
   return (
-    <div>
+    <div >
       <SectionTitle title={"Academy's Captivating Gallery"}></SectionTitle>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 3, 900: 3 }}>
         <Masonry>
           {classes?.map((cl, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative ">
               <img
                 src={cl.url}
                 alt=""
@@ -29,7 +29,7 @@ const ExtraSection = () => {
                 data-aos={index % 2 === 0 ? 'flip-left' : 'flip-down'}
               />
               <div className="absolute inset-0 flex items-center justify-center ">
-                <p  className="text-gray-700 lg:ml-14 opacity-70   text-3xl font-bold">{(cl.name.split(' ')[1])||(cl.name) }</p>
+                <p  className={`text-gray-700 lg:ml-14 opacity-70   text-3xl font-bold ${localTheme === 'dark' ? 'text-white' : ''}`}>{(cl.name.split(' ')[1])||(cl.name) }</p>
               </div>
             </div>
           ))}

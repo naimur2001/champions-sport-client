@@ -44,7 +44,7 @@ const MyClass = () => {
         {info.name}
         </td>
         <td className='font-medium '> {info.status}</td>
-        <td className='font-medium'> {info.seat}</td>
+        <td className='font-medium'> {0 || info.seat}</td>
         <td className='font-medium'> n/a </td>
         <th>
           

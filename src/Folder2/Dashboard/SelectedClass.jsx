@@ -2,6 +2,7 @@ import React from 'react';
 import useClassCart from '../../Folder1/Hooks/useClassCart';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Folder1/Hooks/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
   const [classcart,refetch]=useClassCart();
@@ -49,7 +50,7 @@ const [axiosSecure]=useAxiosSecure()
         <th>Name</th>
         <th>Price</th>
         <th>Action</th>
-        <th></th>
+        <th><Link to={'/dashboard/payment'}> <button className="btn btn-warning btn-xs">Pay</button></Link></th>
       </tr>
     </thead>
     <tbody>
@@ -71,7 +72,7 @@ const [axiosSecure]=useAxiosSecure()
         </td>
         <td className='font-medium'>$ {info.classPrice}</td>
         <th>
-          <button className="btn btn-warning btn-xs">Pay</button>
+         
           <button onClick={()=>handleRemove(info._id)} className='btn btn-error btn-xs ml-2'>Remove</button>
         </th>
       </tr>

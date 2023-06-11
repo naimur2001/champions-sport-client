@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useClasses from '../../Folder1/Hooks/useClasses';
 import Swal from 'sweetalert2';
+import ModalBtn from './ModalBtn';
+// import ModalBtn from './ModalBtn';
 
 const ManageClass = () => {
   const [Classes,refetch]=useClasses();
@@ -25,8 +27,29 @@ const handleApproved=(cl)=>{
       }
     });
 }
-const handleDenied=()=>{}
-const handleFeedback=()=>{}
+const handleDenied=(cl)=>{
+  console.log(cl);
+  fetch(`http://localhost:5000/classes/denied/${cl?._id}`, {
+    method: 'PATCH',
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.modifiedCount) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `Status Updated`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch();
+      
+      }
+    });
+}
+// console.log(Classes);
+
+
   return (
  <div>
       <div className="overflow-x-auto">
@@ -41,7 +64,7 @@ const handleFeedback=()=>{}
               <th>price</th>
               <th>status</th>
               <th>Actions</th>
-              <th></th>
+             
             </tr>
           </thead>
           {Classes?.map((cl, i) => (
@@ -71,33 +94,28 @@ const handleFeedback=()=>{}
                   <div className="flex flex-col gap-2">
                     <button
                       onClick={() => handleApproved(cl)}
-                      className={`badge font-medium text-white badge-lg  badge-accent
-                     ${cl.status === 'approved' ? 'disabled opacity-25' : ''} `}
+                      className={`badge font-medium text-white badge-lg  badge-neutral
+                     ${cl.status !== 'pending' ? 'disabled opacity-25' : ''} `}
                   
                     >
                       Approve
                     </button>
                     <button
                       onClick={() => handleDenied(cl)}
-                      className={`badge font-medium text-black badge-lg mx-2 badge-warning 
-                     `}
+                      className={`badge font-medium text-white badge-lg mx-2 badge-error 
+                      ${cl.status !== 'pending' ? 'disabled opacity-25' : ''}   `}
                   
                     >
                       Deny
                     </button>
-                    <button
-                      onClick={() => handleFeedback(cl)}
-                      className={`badge font-medium text-black badge-lg mx-2 badge-accent
-                       `}
-                  
-                    >
-                      Feedback
-                    </button>
+
+   {/* <ModalBtn id={cl._id}></ModalBtn> */}
                   </div>
                 </td>
               </tr>
             </tbody>
           ))}
+        
         </table>
       </div>
     </div>
