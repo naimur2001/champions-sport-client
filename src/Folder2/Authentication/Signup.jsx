@@ -18,7 +18,7 @@ const Signup = () => {
       // console.log(user);
    updateUserProfile(data.name,data.url)
    .then(()=>{
-    const savedUser={name: data.name,email:data.email}
+    const savedUser={name: data.name,email:data.email,url:data.url}
 fetch('http://localhost:5000/users',{
   method:"POST",
   headers: {
