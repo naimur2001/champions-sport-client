@@ -4,13 +4,13 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useClasses=()=>{
   const [axiosSecure] = useAxiosSecure();
-  const {data:classes,isLoading:loading,refetch}=useQuery({
+  const {data:classes,refetch}=useQuery({
     queryKey:['classes'],
     queryFn: async()=>{
       const res=await axiosSecure.get('/classes')
       return res.data
     }
   })
-  return [classes,loading,refetch]
+  return [classes,refetch]
 }
 export default useClasses;

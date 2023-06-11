@@ -4,7 +4,7 @@ import useAdmin from '../../Folder1/Hooks/useAdmin';
 
 const Dashboard = () => {
 const [role]=useAdmin()
-console.log(role);
+// console.log(role);
   return (
 <div>
 <div className="drawer lg:drawer-open rounded-lg">
@@ -20,6 +20,9 @@ console.log(role);
   {role === 'admin' ? (
     <>
       <li className='font-medium'>
+        <h1 className='border-b-2 border-b-black mb-2' >Admin Dashboard</h1>
+      </li>
+      <li className='font-medium'>
         <NavLink to="/dashboard/manageclass">Manage Class</NavLink>
       </li>
       <li className='font-medium'>
@@ -28,6 +31,9 @@ console.log(role);
     </>
   ) : role === 'instructor' ? (
     <>
+    <li className='font-medium'>
+        <h1 className='border-b-2 border-b-black mb-2' >Instructor Dashboard</h1>
+      </li>
       <li className='font-medium'>
         <NavLink to="/dashboard/addclass">Add a Class</NavLink>
       </li>
@@ -37,6 +43,9 @@ console.log(role);
     </>
   ) : (
     <>
+    <li className='font-medium'>
+        <h1 className='border-b-2 border-b-black mb-2' >Student Dashboard</h1>
+      </li>
       <li className='font-medium'>
         <NavLink to="/dashboard/selectclass">My Selected Class</NavLink>
       </li>

@@ -1,14 +1,16 @@
-import {  useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Folder2/Authentication/AuthProvider';
- export const axiosSecure = axios.create({
+
+export const axiosSecure = axios.create({
   baseURL: 'http://localhost:5000',
 });
 
 const useAxiosSecure = () => {
- const {logOut}=useContext(AuthContext);  
-const navigate=useNavigate()
+  const { logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem('access-token');
@@ -21,21 +23,19 @@ const navigate=useNavigate()
     axiosSecure.interceptors.response.use(
       (res) => res,
       (error) => {
-        if (error.res) {
-          const { status } = error.res;
-          if (  status === 403 || status === 401  || status === 402) {
-             logOut();
+        if (error.response) {
+          const { status } = error.response;
+          if (status === 403 || status === 401 || status === 402) {
+            logOut();
             navigate('/login');
           }
         }
         return Promise.reject(error);
       }
     );
+  }, [logOut, navigate]);
 
- 
-  }, [logOut,navigate]);
-
-  return [axiosSecure] ;
+  return [axiosSecure];
 };
 
 export default useAxiosSecure;

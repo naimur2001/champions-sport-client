@@ -1,10 +1,30 @@
 import React from 'react';
 import useClasses from '../../Folder1/Hooks/useClasses';
+import Swal from 'sweetalert2';
 
 const ManageClass = () => {
   const [Classes,refetch]=useClasses();
 
-const handleApproved=()=>{}
+const handleApproved=(cl)=>{
+  console.log(cl);
+  fetch(`http://localhost:5000/classes/approve/${cl?._id}`, {
+    method: 'PATCH',
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.modifiedCount) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `Status Updated`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch();
+      
+      }
+    });
+}
 const handleDenied=()=>{}
 const handleFeedback=()=>{}
   return (
@@ -29,12 +49,13 @@ const handleFeedback=()=>{}
               <tr>
                 <td>{i + 1}</td>
                 <td>
-                <div className="mask mask-squircle w-12 h-12">
-                <img src={cl.url} alt="class" />
+                <div className="mask mask-squircle ">
+                <img src={cl.url} alt="class" className='w-12 h-12' />
               </div>
                 </td>
                 <td>{cl.name}</td>
                 <td>{cl.instructor_name}
+                <br/>
                 <span  className='badge badge-success'>{cl.instructor_email}</span>
                 </td>
                 <td>
@@ -50,8 +71,8 @@ const handleFeedback=()=>{}
                   <div className="flex flex-col gap-2">
                     <button
                       onClick={() => handleApproved(cl)}
-                      className={`badge font-medium text-white badge-lg  badge-secondary
-                        `}
+                      className={`badge font-medium text-white badge-lg  badge-accent
+                     ${cl.status === 'approved' ? 'disabled opacity-25' : ''} `}
                   
                     >
                       Approve
@@ -65,8 +86,8 @@ const handleFeedback=()=>{}
                       Deny
                     </button>
                     <button
-                      onClick={() => handleFeedback(user)}
-                      className={`badge font-medium text-black badge-lg mx-2 badge-info
+                      onClick={() => handleFeedback(cl)}
+                      className={`badge font-medium text-black badge-lg mx-2 badge-accent
                        `}
                   
                     >
