@@ -4,14 +4,33 @@ import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 const ManageUser = () => {
   const { data: users = [], refetch } = useQuery(['users'], async () => {
-    const res = await fetch('http://localhost:5000/users');
+    const res = await fetch('https://champion-sports-server.vercel.app/users');
     return res.json();
   });
 
   
 
-  const handleMakeAdmin_Instructor = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user?._id}`, {
+  const handleMakeAdmin = (user) => {
+    fetch(`https://champion-sports-server.vercel.app/users/admin/${user?._id}`, {
+      method: 'PATCH',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `Position Updated`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        
+        }
+      });
+  };
+  const handleMakeInstructor = (user) => {
+    fetch(`https://champion-sports-server.vercel.app/users/instructor/${user?._id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
@@ -72,7 +91,7 @@ const ManageUser = () => {
                 <td className="">
                   <div className="mx-2">
                     <button
-                      onClick={() => handleMakeAdmin_Instructor(user)}
+                      onClick={() =>handleMakeInstructor(user) }
                       className={`badge font-medium text-white badge-lg  badge-secondary
                       ${user?.role === 'instructor' ? 'disabled opacity-10' : '' }   `}
                   
@@ -80,7 +99,7 @@ const ManageUser = () => {
                       Instructor
                     </button>
                     <button
-                      onClick={() => handleMakeAdmin_Instructor(user)}
+                      onClick={() =>handleMakeAdmin(user) }
                       className={`badge font-medium text-black badge-lg mx-2 badge-warning 
                       ${user?.role === 'admin' ? 'disabled opacity-10' : '' }  `}
                   

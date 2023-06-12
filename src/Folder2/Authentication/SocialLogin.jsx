@@ -13,7 +13,7 @@ const SocialLogin = () => {
       const loggedUser=res.user;
       console.log(loggedUser);
       const savedUser={name: loggedUser.displayName,email:loggedUser.email,url:loggedUser.photoURL}
-        fetch('http://localhost:5000/users',{
+        fetch('https://champion-sports-server.vercel.app/users',{
           method:"POST",
           headers: {
             'content-type' : 'application/json'

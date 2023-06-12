@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 const MyClass = () => {
   const {user}=useContext(AuthContext)
   const { data:certainClass  = [], refetch } = useQuery(['classes'], async () => {
-    const res = await fetch(`http://localhost:5000/classes/${user.email}`);
+    const res = await fetch(`https://champion-sports-server.vercel.app/classes/${user.email}`);
     return res.json();
   }); 
 

@@ -8,34 +8,36 @@ const SelectedClass = () => {
   const [classcart,refetch]=useClassCart();
   
 const [axiosSecure]=useAxiosSecure()
-  const handleRemove=(id)=>{
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Remove it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-      axiosSecure.delete(`/classcart/${id}`)
-      .then(res=>{
-        console.log(res.data);
-        refetch()
+const handleRemove = (info) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, Remove it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosSecure.delete(`/classcart/${info._id}`)
+        .then(res => {
+          console.log(res.data);
+          refetch();
 
-        if (res.data.deletedCount>0) {
+          if (res.data.deletedCount > 0) {
+            
 
-          Swal.fire(
-            'success',
-            'Class removed',
-            'Removed'
-          )
-        }
-      })
-      }
-    })
-  }
+            Swal.fire(
+              'success',
+              'Class removed',
+              'Removed'
+            )
+          }
+        })
+    }
+  })
+}
+
 
   return (
     <div>
@@ -81,7 +83,7 @@ Selected Class
         <td className='font-medium'>$ {info.classPrice}</td>
         <th>
          
-          <button onClick={()=>handleRemove(info._id)} className='btn btn-error btn-xs ml-2'>Remove</button>
+          <button onClick={()=>handleRemove(info)} className='btn btn-error btn-xs ml-2'>Remove</button>
         </th>
       </tr>
         
@@ -99,3 +101,19 @@ Selected Class
 };
 
 export default SelectedClass;
+// fetch(`https://champion-sports-server.vercel.app/classes/${info.classId}`)
+//               .then(res => res.json())
+//               .then(classData => {
+//                 const updatedSeat = parseInt(classData.seat) + 1; 
+//                 fetch(`https://champion-sports-server.vercel.app/classes/inc/${info.classId}`, {
+//                   method: "PATCH",
+//                   headers: {
+//                     "Content-Type": "application/json",
+//                   },
+//                   body: JSON.stringify({ seat: parseInt(updatedSeat) }),
+//                 })
+//                   .then(res => res.json())
+//                   .then(data => {
+//                     console.log("Seat updated:", data);
+//                   });
+//               });

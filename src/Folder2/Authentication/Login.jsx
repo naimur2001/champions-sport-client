@@ -61,7 +61,7 @@ else if (error.code === 'auth/wrong-password') {
   <div className="hero min-h-screen ">
   <div className="hero-content flex-col lg:flex-row ">
     <div className="">
-     <img src="/src/assets/loginsignup poster.png" className='w-3/5 h-1/3 rounded-2xl' alt="" />
+     <img src="/src/assets/login.png" className='w-3/5 h-1/3 rounded-2xl' alt="" />
     </div>
     <div className="card mr-24 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
     <form onSubmit={handleLogin} >

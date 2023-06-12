@@ -10,7 +10,7 @@ const ManageClass = () => {
 
   const handleApproved = (cl) => {
     console.log(cl);
-    fetch(`http://localhost:5000/classes/approve/${cl?._id}`, {
+    fetch(`https://champion-sports-server.vercel.app/classes/approve/${cl?._id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ const ManageClass = () => {
 
   const handleDenied = (cl) => {
     console.log(cl);
-    fetch(`http://localhost:5000/classes/denied/${cl?._id}`, {
+    fetch(`https://champion-sports-server.vercel.app/classes/denied/${cl?._id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
@@ -56,7 +56,7 @@ const ManageClass = () => {
     console.log(data);
     console.log(modalData);
     // setFeedData(data);
-    fetch(`http://localhost:5000/classes/feedback/${modalData}`, {
+    fetch(`https://champion-sports-server.vercel.app/classes/feedback/${modalData}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ const ManageClass = () => {
           <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModal} />
           <div className="modal">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="modal-box">
+              <div className="modal-box w-1/3">
                 <h3 className="font-bold text-lg mb-2">Feedback</h3>
                 <input
                   type="text"

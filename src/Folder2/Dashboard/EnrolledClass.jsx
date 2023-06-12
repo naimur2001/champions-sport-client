@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import usePayments from '../../Folder1/Hooks/usePayments';
 import { AuthContext } from '../Authentication/AuthProvider';
@@ -8,14 +8,24 @@ const EnrolledClass = () => {
   const [paydata]=usePayments();
   const {user}=useContext(AuthContext);
   const [classes]=useClasses()
+const [mail,setMail]=useState('')
 
-  const selectedMail = paydata?.filter(data => data.email === user.email);
- console.log(selectedMail);
-  
- 
- const enrolledClass = classes?.filter((data) =>
- selectedMail[0]?.cartItemsIds?.some((cid) => cid === data._id)
-);
+useEffect(() => {
+  const selectedMail = paydata?.filter(data => data?.email === user?.email);
+  console.log(selectedMail);
+  setMail(selectedMail);
+}, []);
+
+const [enrollClasses, setEnrollClasses] = useState([]);
+
+useEffect(() => {
+  if (mail && mail.length > 0) {
+    const enrolledClasses = classes?.filter((data) =>
+      mail.flatMap((m) => m?.cartItemsIds || []).some((cid) => cid === data._id)
+    );
+    setEnrollClasses(enrolledClasses);
+  }
+}, [mail, classes]);
 
 
   return (
@@ -43,10 +53,10 @@ Enrolled Class
     
       </tr>
     </thead>
-    <tbody>
+   {  <tbody>
 
      {
-      enrolledClass?.map((info,i)=>
+      enrollClasses?.map((info,i)=>
       
          <tr key={i}>
       <td className='font-medium'>
@@ -67,7 +77,7 @@ Enrolled Class
       )
      }
     
-    </tbody>
+    </tbody>}
 
    
     

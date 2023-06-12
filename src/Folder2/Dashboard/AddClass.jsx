@@ -21,7 +21,7 @@ const AddClass = () => {
       name,url,seat,price,status,instructor_name,instructor_email,
     }
     console.log(classInfo);
-    fetch(`http://localhost:5000/classes`,{
+    fetch(`https://champion-sports-server.vercel.app/classes`,{
       method: "POST",
       headers:{
         'content-type': 'application/json'

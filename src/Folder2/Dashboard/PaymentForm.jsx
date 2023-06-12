@@ -5,7 +5,7 @@ import './PaymentForm.css'
 import useAxiosSecure from '../../Folder1/Hooks/useAxiosSecure';
 import { AuthContext } from '../Authentication/AuthProvider';
 const PaymentForm = ({price,classcart }) => {
-  console.log(price,classcart);
+  // console.log(price,classcart);
   const elements=useElements()
   const stripe=useStripe()
   const [cardError,setCardError]=useState('');
@@ -78,6 +78,7 @@ setProcessing(false)
 if (paymentIntent.status === 'succeeded') {
   setTransactionId(paymentIntent.id);
   // save payment information to the server
+  
   const payment = {
       email: user?.email,
       transactionId: paymentIntent.id,
@@ -89,6 +90,18 @@ if (paymentIntent.status === 'succeeded') {
       status: 'service pending',
       classNames: classcart?.map(item => item.className)
   }
+  const cartItems = classcart?.map(item => item._id);
+
+  const quantity = cartItems.reduce((acc, id) => {
+    if (acc[id]) {
+      acc[id] += 1;
+    } else {
+      acc[id] = 1;
+    }
+    return acc;
+  }, {});
+  console.log(quantity);
+
   axiosSecure.post('/payment', payment)
       .then(res => {
           console.log(res.data);

@@ -19,7 +19,7 @@ const Signup = () => {
    updateUserProfile(data.name,data.url)
    .then(()=>{
     const savedUser={name: data.name,email:data.email,url:data.url}
-fetch('http://localhost:5000/users',{
+fetch('https://champion-sports-server.vercel.app/users',{
   method:"POST",
   headers: {
     'content-type' : 'application/json'

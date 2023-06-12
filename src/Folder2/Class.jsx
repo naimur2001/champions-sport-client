@@ -2,9 +2,14 @@ import React from 'react';
 import useClasses from '../Folder1/Hooks/useClasses';
 import ClassCard from './ClassCard';
 import SectionTitle from './Shared/SectionTitle';
+import usePayments from '../Folder1/Hooks/usePayments';
 
 const Class = () => {
   const [classes]=useClasses();
+  const [paydata]=usePayments();
+
+
+  
   return (
     <div >
       <SectionTitle title={'What we Teach -'} > </SectionTitle>

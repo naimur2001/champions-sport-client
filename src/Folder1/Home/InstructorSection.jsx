@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-import "/public/random.css";
+import "./public/random.css";
 
 import { FreeMode, Pagination } from "swiper";
 import useInstructors from '../Hooks/useInstructors';
