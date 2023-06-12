@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
+import useAdmin from '../../Folder1/Hooks/useAdmin';
 
 const Navbar = () => {
   const {user,logOut}=useContext(AuthContext);
@@ -10,6 +11,8 @@ const Navbar = () => {
     const localTheme=localStorage.getItem('theme');
     document.querySelector('html').setAttribute('data-theme',localTheme)
   },[theme])
+  // 
+  const [role]=useAdmin()
   // 
   const handleToggle=(e)=>{
     if (e.target.checked) {
@@ -41,8 +44,14 @@ const Navbar = () => {
       </li>
       { user && (
         <>
-          <li className=' font-medium'>
-            <Link to="/dashboard">Dashboard</Link>
+          <li className='font-medium'>
+            <Link to={
+              role === 'admin'
+                ? '/dashboard/manageclass'
+                : role === 'instructor'
+                  ? '/dashboard/myclass'
+                  : '/dashboard/selectclass'
+            }>Dashboard</Link>
           </li>
           <label className="swap swap-rotate ">
   

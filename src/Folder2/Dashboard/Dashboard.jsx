@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import useAdmin from '../../Folder1/Hooks/useAdmin';
+import { motion } from 'framer-motion';
 
 const Dashboard = () => {
 const [role]=useAdmin()
@@ -12,10 +13,13 @@ const [role]=useAdmin()
   <div className="drawer-content flex flex-col ">
 
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open SideBar</label>
-  <Outlet></Outlet>
+  
+
+<Outlet></Outlet>
   </div> 
   <div className="drawer-side ">
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
+    
     <ul className="menu p-4 w-64 h-full bg-slate-400 text-base-content">
   {role === 'admin' ? (
     <>
@@ -62,6 +66,7 @@ const [role]=useAdmin()
 
   </div>
 </div>
+
 </div>
   );
 };

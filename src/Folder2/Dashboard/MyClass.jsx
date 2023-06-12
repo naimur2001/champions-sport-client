@@ -1,6 +1,5 @@
 import React from 'react';
-// import useClasses from '../../Folder1/Hooks/useClasses';
-
+import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
@@ -16,6 +15,15 @@ const MyClass = () => {
 
   return (
     <div>
+      <motion.h1
+  className="my-2 font-mono text-3xl text-center"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.5 }}
+>
+  My Class
+</motion.h1>
+
             <div className="overflow-x-auto">
   <table className="table font-mono">
     {/* head */}
@@ -45,7 +53,7 @@ const MyClass = () => {
         </td>
         <td className='font-medium '> {info.status}</td>
         <td className='font-medium'> {0 || info.seat}</td>
-        <td className='font-medium'> n/a </td>
+        <td className='font-medium'> {info.feedback || 'n/a'} </td>
         <th>
           
           <button  className='btn btn-error btn-xs ml-2'>Update</button>

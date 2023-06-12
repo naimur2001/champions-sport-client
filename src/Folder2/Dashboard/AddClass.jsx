@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Authentication/AuthProvider';
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 const AddClass = () => {
   const {user}=useContext(AuthContext)
@@ -47,7 +48,15 @@ const AddClass = () => {
   return (
     <div>
        <div>
-  <h1 className='text-center text-2xl text-gray-700 font-mono font-semibold my-4' >Add a  Class Information</h1>
+       <motion.h1
+  className="my-2 font-mono text-3xl text-center"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+  Add a Class Information
+</motion.h1>
+
   <div className='bg-slate-200 p-2 rounded-lg'>
       <form onSubmit={handleAddData} >
 

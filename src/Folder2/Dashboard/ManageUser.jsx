@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
-
+import { motion } from 'framer-motion';
 const ManageUser = () => {
   const { data: users = [], refetch } = useQuery(['users'], async () => {
     const res = await fetch('http://localhost:5000/users');
@@ -34,6 +34,24 @@ const ManageUser = () => {
 
   return (
     <div>
+        <motion.h1
+      className="my-2 font-mono text-3xl text-center"
+      initial={{ opacity: 0, scale: 0.5, color: 'orange' }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        color: 'orange',
+        transition: {
+          type: 'spring',
+          stiffness: 500,
+          damping: 25,
+          duration: 0.5,
+        },
+
+      }}
+    >
+      Manage User
+    </motion.h1>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>

@@ -3,7 +3,7 @@ import useClassCart from '../../Folder1/Hooks/useClassCart';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Folder1/Hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 const SelectedClass = () => {
   const [classcart,refetch]=useClassCart();
   
@@ -39,6 +39,14 @@ const [axiosSecure]=useAxiosSecure()
 
   return (
     <div>
+      <motion.h1
+  className="my-2 font-mono text-3xl text-center"
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+Selected Class
+</motion.h1>
       <div className="overflow-x-auto">
   <table className="table font-mono">
     {/* head */}
