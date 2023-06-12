@@ -35,7 +35,7 @@ const ManageUser = () => {
   return (
     <div>
         <motion.h1
-      className="my-2 font-mono text-3xl text-center"
+      className="my-2 font-mono text-5xl text-center"
       initial={{ opacity: 0, scale: 0.5, color: 'orange' }}
       animate={{
         opacity: 1,

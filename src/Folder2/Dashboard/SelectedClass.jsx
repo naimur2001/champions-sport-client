@@ -40,7 +40,7 @@ const [axiosSecure]=useAxiosSecure()
   return (
     <div>
       <motion.h1
-  className="my-2 font-mono text-3xl text-center"
+  className="my-2 font-mono text-5xl text-center"
   initial={{ opacity: 0, y: -20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.5 }}
