@@ -1,7 +1,10 @@
 import React from 'react';
-import SectionTitle from '../Shared/SectionTitle';
-import useInstructors from '../../Folder1/Hooks/useInstructors';
-import InstructorCard from '../../Folder1/Home/InstructorCard';
+// import SectionTitle from '../Shared/SectionTitle';
+// import useInstructors from '../../Folder1/Hooks/useInstructors';
+import InstructorCard from '../Folder1/Home/InstructorCard';
+import SectionTitle from './Shared/SectionTitle';
+import useInstructors from '../Folder1/Hooks/useInstructors';
+// import InstructorCard from '../../Folder1/Home/InstructorCard';
 
 
 const Instructor = () => {

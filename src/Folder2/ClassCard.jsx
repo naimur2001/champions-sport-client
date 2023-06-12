@@ -1,9 +1,11 @@
 import React from 'react';
 import { useContext } from 'react';
-import { AuthContext } from '../Authentication/AuthProvider';
-import useClassCart from '../../Folder1/Hooks/useClassCart';
+// import { AuthContext } from '../Authentication/AuthProvider';
+// import useClassCart from '../../Folder1/Hooks/useClassCart';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from './Authentication/AuthProvider';
+import useClassCart from '../Folder1/Hooks/useClassCart';
 // import useClasses from '../../Folder1/Hooks/useClasses';
 
 const ClassCard = ({cl}) => {

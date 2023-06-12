@@ -5,8 +5,6 @@ import Home from "../Home/Home";
 import Login from "../../Folder2/Authentication/Login";
 import Signup from "../../Folder2/Authentication/Signup";
 import Dashboard from "../../Folder2/Dashboard/Dashboard";
-import Instructor from "../../Folder2/NavsItem/Instructor";
-import Class from "../../Folder2/NavsItem/Class";
 import ManageUser from "../../Folder2/Dashboard/ManageUser";
 import ManageClass from "../../Folder2/Dashboard/ManageClass";
 import AddClass from "../../Folder2/Dashboard/AddClass";
@@ -14,6 +12,8 @@ import MyClass from "../../Folder2/Dashboard/MyClass";
 import EnrolledClass from "../../Folder2/Dashboard/EnrolledClass";
 import SelectedClass from "../../Folder2/Dashboard/SelectedClass";
 import Payment from "../../Folder2/Dashboard/Payment";
+import Class from "../../Folder2/Class";
+import Instructor from "../../Folder2/Instructor";
 
 
 

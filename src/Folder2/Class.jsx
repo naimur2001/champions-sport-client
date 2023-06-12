@@ -1,7 +1,7 @@
 import React from 'react';
-import useClasses from '../../Folder1/Hooks/useClasses';
+import useClasses from '../Folder1/Hooks/useClasses';
 import ClassCard from './ClassCard';
-import SectionTitle from '../Shared/SectionTitle';
+import SectionTitle from './Shared/SectionTitle';
 
 const Class = () => {
   const [classes]=useClasses();

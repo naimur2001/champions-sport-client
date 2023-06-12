@@ -5,7 +5,7 @@ import './PaymentForm.css'
 import useAxiosSecure from '../../Folder1/Hooks/useAxiosSecure';
 import { AuthContext } from '../Authentication/AuthProvider';
 const PaymentForm = ({price,classcart }) => {
-  console.log(price);
+  console.log(price,classcart);
   const elements=useElements()
   const stripe=useStripe()
   const [cardError,setCardError]=useState('');
@@ -73,7 +73,7 @@ if (confirmError) {
   console.log(confirmError);
 }
 
-console.log('payment intent', paymentIntent)
+// console.log('payment intent', paymentIntent)
 setProcessing(false)
 if (paymentIntent.status === 'succeeded') {
   setTransactionId(paymentIntent.id);
@@ -92,12 +92,10 @@ if (paymentIntent.status === 'succeeded') {
   axiosSecure.post('/payment', payment)
       .then(res => {
           console.log(res.data);
-          if (res.data.result.insertedId) {
-              // display confirm
-          }
+        //changes
       })
 }
-console.log('[paymentintent]',paymentIntent);
+// console.log('[paymentintent]',paymentIntent);
 
   }
   return (
@@ -120,7 +118,7 @@ console.log('[paymentintent]',paymentIntent);
           },
         }}
       />
-      <button className='btn-sm btn hover:bg-yellow-200 bg-yellow-300 border-0 mt-4' type="submit" disabled={!stripe  || processing }>
+      <button className='btn-sm btn hover:bg-yellow-200 bg-yellow-300 border-0 mt-4' type="submit" disabled={!stripe || !clientSecret  || processing }>
         Pay
       </button>
     </form>
