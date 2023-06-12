@@ -5,6 +5,7 @@ import './PaymentForm.css'
 import useAxiosSecure from '../../Folder1/Hooks/useAxiosSecure';
 import { AuthContext } from '../Authentication/AuthProvider';
 const PaymentForm = ({price,classcart }) => {
+  console.log(price);
   const elements=useElements()
   const stripe=useStripe()
   const [cardError,setCardError]=useState('');
@@ -17,11 +18,12 @@ const PaymentForm = ({price,classcart }) => {
     if (price > 0) {
         axiosSecure.post('/create-payment-intent', { price })
             .then(res => {
-                console.log(res.data.clientSecret)
+                // console.log(res.data.clientSecret)
                 setClientSecret(res.data.clientSecret);
+                console.log(clientSecret);
             })
     }
-}, [])
+}, [price,axiosSecure])
 
 
   const handleSubmit=async (event)=>{
@@ -34,7 +36,7 @@ const PaymentForm = ({price,classcart }) => {
     if (card == null) {
       return;
     }
-    console.log(card);
+    // console.log(card);
     
      const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
@@ -48,6 +50,10 @@ if (error) {
 } else {
   setCardError('')
   console.log('[PaymentMethod]', paymentMethod);
+}
+if (!clientSecret) {
+  console.log('Invalid client secret');
+  return;
 }
 // confirm
 setProcessing(true)
@@ -81,7 +87,7 @@ if (paymentIntent.status === 'succeeded') {
       cartItems: classcart?.map(item => item._id),
       cartItemsIds: classcart?.map(item => item.classId),
       status: 'service pending',
-      classNames: classcart?.map(item => item.name)
+      classNames: classcart?.map(item => item.className)
   }
   axiosSecure.post('/payment', payment)
       .then(res => {
@@ -91,7 +97,7 @@ if (paymentIntent.status === 'succeeded') {
           }
       })
 }
-console.log(paymentIntent);
+console.log('[paymentintent]',paymentIntent);
 
   }
   return (
@@ -114,7 +120,7 @@ console.log(paymentIntent);
           },
         }}
       />
-      <button className='btn-sm btn hover:bg-yellow-200 bg-yellow-300 border-0 mt-4' type="submit" disabled={!stripe || processing }>
+      <button className='btn-sm btn hover:bg-yellow-200 bg-yellow-300 border-0 mt-4' type="submit" disabled={!stripe  || processing }>
         Pay
       </button>
     </form>
