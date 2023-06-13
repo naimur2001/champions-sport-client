@@ -18,6 +18,7 @@ import InstructorRoute from "../../Folder2/Dashboard/InstructorRoute";
 import AdminRoute from "../../Folder2/Dashboard/AdminRoute";
 import StudentRoute from "../../Folder2/Dashboard/StudentRoute";
 import PrivateRoute from "../../Folder2/PrivateRoute";
+import PaymentHistory from "../../Folder2/Dashboard/PaymentHistory";
 
 
 
@@ -98,11 +99,17 @@ const router=createBrowserRouter([
          path: 'payment',
          element: <Payment></Payment>
       },
+      {
+         path: 'paymenthistory',
+         element: <StudentRoute>
+          <PaymentHistory></PaymentHistory>
+         </StudentRoute>
+      },
       
     ]
   },
   {
-    path: '/*',
+    path: '*',
     element: <ErrorPage></ErrorPage>
   }
 

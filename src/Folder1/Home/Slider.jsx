@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import "/public/random.css";
+import "/public/Slider.css";
 
 
 
