@@ -170,7 +170,7 @@ const ManageClass = () => {
           <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModal} />
           <div className="modal">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="modal-box w-1/3">
+              <div className="modal-box w-96 bg-slate-300">
                 <h3 className="font-bold text-lg mb-2">Feedback</h3>
                 <input
                   type="text"
@@ -178,7 +178,7 @@ const ManageClass = () => {
                   {...register('feedback', { required: true })}
                   placeholder="Write..."
                   name="feedback"
-                  className="input input-bordered"
+                  className="input input-bordered w-80 h-20"
                 />
                 <div className="modal-action">
                   <input className="btn btn-error" type="submit" value={'Send'} />

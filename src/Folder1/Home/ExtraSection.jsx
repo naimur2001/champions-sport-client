@@ -15,16 +15,20 @@ const ExtraSection = () => {
     });
   }, []);
   const localTheme=localStorage.getItem('theme');
+  if (!classes || classes.length === 0) {
+    return null; // or render a loading state if needed
+  }
+
   return (
     <div >
       <SectionTitle title={"Academy's Captivating Gallery"}></SectionTitle>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 3, 900: 3 }}>
-        <Masonry>
-          {classes?.map((cl, index) => (
+        <Masonry >
+          {classes.map((cl, index) => (
             <div key={index} className="relative ">
               <img
                 src={cl.url}
-                alt=""
+                alt="img"
                 className={index % 2 === 0 ? 'aos-animate p-2' : 'aos-animate p-2'}
                 data-aos={index % 2 === 0 ? 'flip-left' : 'flip-down'}
               />

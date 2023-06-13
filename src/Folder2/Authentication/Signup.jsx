@@ -58,7 +58,7 @@ fetch('https://champion-sports-server.vercel.app/users',{
     <div className="hero min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className='ml-40'>
-          <img src="/src/assets/loginsignup poster.png" className='w-3/5 h-1/3 rounded-2xl' alt="" />
+          <img src="./login.png" className='w-3/5 h-1/3 rounded-2xl' alt="" />
         </div>
         <div className="card lg:w-2/3 w-full max-w-2xl shadow-2xl bg-base-100 ">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">

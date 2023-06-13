@@ -47,7 +47,7 @@ const InstructorSection = () => {
      
       
         {
-instructors?.map(instructor=>   <SwiperSlide>    <InstructorCard key={instructor._id} instructor={instructor} ></InstructorCard>  </SwiperSlide>  )
+instructors?.map(instructor=>   <SwiperSlide key={instructor._id}>    <InstructorCard key={instructor._id} instructor={instructor} ></InstructorCard>  </SwiperSlide>  )
         }
       </Swiper>
       </div>

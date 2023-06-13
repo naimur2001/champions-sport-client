@@ -7,7 +7,7 @@ const Footer = () => {
     <div>
       <footer className={`footer p-10 bg-gradient-to-r from-red-300 to-yellow-300 rounded-lg text-base-content  ${localTheme === 'dark' ? 'text-black' : ''} `}>
   <div>
-  <img src="/src/assets/cs-logo.png"  className="w-[80px] h-[80px]" alt="" />
+  <img src="./cs-logo.png"  className="w-[80px] h-[80px]" alt="" />
     <p>Champions Sport<br/>Providing Best Instruction  since 2012</p>
   </div> 
   <div>

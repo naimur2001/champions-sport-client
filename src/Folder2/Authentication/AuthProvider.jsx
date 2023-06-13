@@ -43,7 +43,7 @@ if (currentUser) {
 else{
  localStorage.removeItem('jwt-token')
 }
-
+setLoading(false)
  });
  return ()=>{
    return unsubscribe();
