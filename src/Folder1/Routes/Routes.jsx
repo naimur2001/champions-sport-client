@@ -14,6 +14,10 @@ import SelectedClass from "../../Folder2/Dashboard/SelectedClass";
 import Payment from "../../Folder2/Dashboard/Payment";
 import Class from "../../Folder2/Class";
 import Instructor from "../../Folder2/Instructor";
+import InstructorRoute from "../../Folder2/Dashboard/InstructorRoute";
+import AdminRoute from "../../Folder2/Dashboard/AdminRoute";
+import StudentRoute from "../../Folder2/Dashboard/StudentRoute";
+import PrivateRoute from "../../Folder2/PrivateRoute";
 
 
 
@@ -49,40 +53,56 @@ const router=createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
     children: [
       {
         path: 'manageuser',
-        element: <ManageUser></ManageUser>
+        element: <AdminRoute>
+          <ManageUser></ManageUser>
+        </AdminRoute>
       },
       {
         path: 'manageclass',
-        element: <ManageClass></ManageClass>
+        element: <AdminRoute>
+          <ManageClass></ManageClass>
+        </AdminRoute>
       },
       {
          path: 'addclass',
-         element: <AddClass></AddClass>
+         element: <InstructorRoute>
+<AddClass></AddClass>
+
+         </InstructorRoute>
       },
       {
          path: 'myclass',
-         element: <MyClass></MyClass>
+         element: <InstructorRoute>
+          <MyClass></MyClass>
+         </InstructorRoute>
       },
       {
          path: 'enrollclass',
-         element: <EnrolledClass></EnrolledClass>
+         element: <StudentRoute>
+          <EnrolledClass></EnrolledClass>
+         </StudentRoute>
       },
       {
          path: 'selectclass',
-         element: <SelectedClass></SelectedClass>
+         element: <StudentRoute>
+          <SelectedClass></SelectedClass>
+         </StudentRoute>
       },
       {
          path: 'payment',
          element: <Payment></Payment>
       },
+      
     ]
   },
   {
-    path: '*',
+    path: '/*',
     element: <ErrorPage></ErrorPage>
   }
 

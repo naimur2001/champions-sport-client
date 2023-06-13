@@ -55,11 +55,11 @@ const ManageUser = () => {
     <div>
         <motion.h1
       className="my-2 font-mono text-5xl text-center"
-      initial={{ opacity: 0, scale: 0.5, color: 'orange' }}
+      initial={{ opacity: 0, scale: 0.5}}
       animate={{
         opacity: 1,
         scale: 1,
-        color: 'orange',
+        
         transition: {
           type: 'spring',
           stiffness: 500,
