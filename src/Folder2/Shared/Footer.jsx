@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className={`footer p-10 bg-slate-900 rounded-lg text-white text-base-content  ${localTheme === 'dark' ? 'text-black' : ''} `}>
+      <footer className={`footer p-10 bg-slate-900 rounded-lg text-white  ${localTheme === 'dark' ? 'text-black' : ''} `}>
   <div>
   <img src="./cs-logo.png"  className="w-[80px] h-[80px]" alt="" />
     <p>Champions Sport<br/>Providing Best Instruction  since 2012</p>
