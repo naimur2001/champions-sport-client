@@ -5,16 +5,16 @@ import { motion } from 'framer-motion';
 
 const AddClass = () => {
   const {user}=useContext(AuthContext)
-  const sts='pending';
+  
 
   const handleAddData=(event)=>{
     event.preventDefault();
     const form=event.target;
     const name=form.name.value;
     const url=form.url.value;
-    const seat=form.seat.value;
-    const price=form.price.value;
-    const status=sts;
+    const seat=parseInt(form.seat.value);
+    const price=parseFloat(form.price.value);
+    const status='pending';
     const instructor_name=user.displayName
     const instructor_email=user.email
     const classInfo={
@@ -91,20 +91,20 @@ const AddClass = () => {
           <label className="label">
             <span className="label-text text-gray-600 text-lg font-semibold">Available Seat</span>
           </label>
-          <input type="text" name='seat' placeholder="Available seat" className="input input-bordered" />
+          <input type="number" name='seat' placeholder="Available seat" className="input input-bordered" />
         </div>
       <div className="form-control">
           <label className="label">
             <span className="label-text text-gray-600 text-lg font-semibold">Price</span>
           </label>
-          <input type="text" name='price' placeholder="Price" className="input input-bordered" />
+          <input type="number" name='price' placeholder="Price" className="input input-bordered" />
         </div>
-      <div className="form-control">
+      {/* <div className="form-control">
           <label className="label">
             <span className="label-text text-gray-600 text-lg font-semibold">Status</span>
           </label>
-          <input type="text"  defaultValue={sts} className="input input-bordered" />
-        </div>
+          <input type="text"  value={'pending'} className="input input-bordered" />
+        </div> */}
     
  
 </div>
@@ -121,3 +121,4 @@ const AddClass = () => {
 };
 
 export default AddClass;
+// https://champion-sports-server.vercel.app

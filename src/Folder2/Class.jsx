@@ -9,10 +9,18 @@ const Class = () => {
   const [paydata] = usePayments();
   const [approvedClasses, setApprovedClasses] = useState([]);
 
+  // useEffect(() => {
+  //   const filteredClasses = classes.filter(cl => cl.status === 'approved');
+  //   setApprovedClasses(filteredClasses);
+  // }, [classes]);
+
   useEffect(() => {
-    const filteredClasses = classes.filter(cl => cl.status === 'approved');
-    setApprovedClasses(filteredClasses);
+    if (classes) {
+      const filteredClasses = classes.filter(cl => cl.status === 'approved');
+      setApprovedClasses(filteredClasses);
+    }
   }, [classes]);
+  
 
   return (
     <div>

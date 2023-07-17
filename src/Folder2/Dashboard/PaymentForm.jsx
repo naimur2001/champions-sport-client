@@ -4,11 +4,13 @@ import { useState } from 'react';
 import './PaymentForm.css'
 import useAxiosSecure from '../../Folder1/Hooks/useAxiosSecure';
 import { AuthContext } from '../Authentication/AuthProvider';
+import useClasses from '../../Folder1/Hooks/useClasses';
 const PaymentForm = ({price,classcart }) => {
   // console.log(price,classcart);
   const elements=useElements()
   const stripe=useStripe()
   const [cardError,setCardError]=useState('');
+  const [classes] = useClasses();
   const [clientSecret,setClientSecret]=useState('');
   const [axiosSecure]=useAxiosSecure();
   const {user}=useContext(AuthContext)
@@ -77,7 +79,26 @@ if (confirmError) {
 setProcessing(false)
 if (paymentIntent.status === 'succeeded') {
   setTransactionId(paymentIntent.id);
-  // save payment information to the server
+ // Update seat value for each enrolled class
+ console.log(classcart,'clascart');
+ classcart.forEach((classItem) => {
+  
+
+  const updatedSeat = classItem.classSeat - 1;
+console.log(classItem.classId);
+  fetch(`https://champion-sports-server.vercel.app/classes/dec/${classItem.classId}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ seat: updatedSeat }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Seat updated:", data);
+    });
+});
+
   
   const payment = {
       email: user?.email,
