@@ -6,8 +6,13 @@ import { useQuery } from '@tanstack/react-query';
 
 const MyClass = () => {
   const {user}=useContext(AuthContext)
+  const token=localStorage.getItem("jwt-token")
   const { data:certainClass  = [], refetch } = useQuery(['classes'], async () => {
-    const res = await fetch(`https://champion-sports-server.vercel.app/classes/${user.email}`);
+    const res = await fetch(`https://champion-sports-server.vercel.app/classes/${user.email}`
+    , {headers : {
+      authorization: `bearer ${token}`
+    }}
+    );
     return res.json();
   }); 
 

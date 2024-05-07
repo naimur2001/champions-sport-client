@@ -19,6 +19,8 @@ import AdminRoute from "../../Folder2/Dashboard/AdminRoute";
 import StudentRoute from "../../Folder2/Dashboard/StudentRoute";
 import PrivateRoute from "../../Folder2/PrivateRoute";
 import PaymentHistory from "../../Folder2/Dashboard/PaymentHistory";
+import ContactUs from "../../Folder2/ContactUs";
+import AboutUs from "../../Folder2/AboutUs";
 
 
 
@@ -47,6 +49,14 @@ const router=createBrowserRouter([
       {
         path: 'classes',
         element: <Class></Class>
+      },
+      {
+        path: 'contactus',
+        element:<ContactUs></ContactUs>
+      },
+      {
+        path: 'aboutus',
+        element: <AboutUs></AboutUs>
       }
       
     ],

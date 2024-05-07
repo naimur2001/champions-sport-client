@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import SocialLogin from './SocialLogin';
 import { AuthContext } from './AuthProvider';
+import { data } from 'autoprefixer';
 
 
 const Login = () => {
@@ -38,8 +39,24 @@ const Login = () => {
           timer: 1000
         })
     
-      // console.log(loggedUser);
-      form.reset();
+      console.log(loggedUser);
+
+      // fetch("http://localhost:5000/jwt" , {
+      //   method: "POST",
+      //   headers: {
+      //     "content-type": "application/json"
+      //   },
+      //   body: JSON.stringify(loggedUser)
+      // })
+      // .then(res=> res.json())
+      // .then(data=> {
+      //   console.log("jwt",data);
+
+      //   localStorage.setItem("jwt-token", data.token)
+      // })
+
+
+      // form.reset();
       navigate(from)
     })
     .catch(error=>{
