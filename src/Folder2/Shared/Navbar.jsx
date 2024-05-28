@@ -90,7 +90,7 @@ const Navbar = () => {
       }
       </ul>
     </div>
-    <a className="btn btn-ghost bg-gradient-to-br from-orange-500 to-purple-500 bg-clip-text text-transparent font-semibold  text-xl ">Champions Sport</a>
+    <Link to={"/"} className="btn btn-ghost bg-gradient-to-br from-orange-500 to-purple-500 bg-clip-text text-transparent font-semibold  text-xl ">Champions Sport</Link>
  
   </div>
   <div className="navbar-center hidden lg:flex">
