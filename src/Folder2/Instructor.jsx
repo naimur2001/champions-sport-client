@@ -13,8 +13,8 @@ const [instructors]=useInstructors();
   return (
     <div>
       <SectionTitle title={'Our Talented Instructors - '}></SectionTitle>
-<div className='max-w-5xl mx-auto'>
-<div className='mx-auto  grid grid-cols-3 gap-3'>
+<div className='max-w-5xl mx-auto my-10'>
+<div className='mx-8  grid lg:grid-cols-3 grid-cols-1 lg:mx-0  gap-3'>
 {
   instructors?.map(instructor=> <InstructorCard key={instructor._id} instructor={instructor} ></InstructorCard> )
 }
