@@ -89,7 +89,7 @@ const ClassCard = ({cl}) => {
 
   // console.log(seat);
   return (
-    <div>
+    <div className='flex justify-center'>
 <div className={cl.seat === 0 ? "card w-80 bg-red-600 h-96 glass" : "card w-80  h-96 glass"}>
   <figure><img src={cl.url}  alt="class!"/></figure>
   <div className="card-body">

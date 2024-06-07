@@ -26,7 +26,7 @@ const Class = () => {
     <div>
       <SectionTitle title={'What we Teach -'}></SectionTitle>
       <div className='max-w-5xl mx-auto my-3'>
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='grid lg:grid-cols-3 grid-cols-1 gap-3'>
           {approvedClasses?.map(cl => (
             <ClassCard key={cl._id} cl={cl}></ClassCard>
           ))}
