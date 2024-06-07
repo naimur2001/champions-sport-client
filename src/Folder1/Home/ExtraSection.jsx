@@ -20,7 +20,7 @@ const ExtraSection = () => {
   }
 
   return (
-    <div >
+    <div className='lg:px-0 px-6'>
       <SectionTitle title={"Academy's Captivating Gallery"}></SectionTitle>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 3, 900: 3 }}>
         <Masonry >
@@ -29,7 +29,7 @@ const ExtraSection = () => {
               <img
                 src={cl.url}
                 alt="img"
-                className={index % 2 === 0 ? 'aos-animate p-2' : 'aos-animate p-2'}
+                className={index % 2 === 0 ? 'aos-animate p-2 rounded-md' : 'aos-animate p-2 rounded-md'}
                 data-aos={index % 2 === 0 ? 'flip-left' : 'flip-down'}
               />
               <div className="absolute inset-0 flex items-center justify-center ">
